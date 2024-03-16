@@ -1,27 +1,43 @@
-#!/usr/bin/python3
+#!/bin/python3
 
-# Create an empty list
-my_list = []
+import math
+import os
+import random
+import re
+import sys
 
-#Add values using append function
-my_list.append(10)
-my_list.append(20)
-my_list.append(30)
-my_list.append(40)
+#
+# Complete the 'romanizer' function below.
+#
+# The function is expected to return a STRING_ARRAY.
+# The function accepts INTEGER_ARRAY numbers as parameter.
+#
 
-# Insert the value 15 at the second position
-my_list.insert(1,15)
+def romanizer(numbers):
+    # Write your code here
+    val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    roman = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+           
+    answer = ''
+    for i in range(len(val)):
+        while numbers >= val[i]:
+            answer += roman[i]
+            numbers -= val[i]
+    return answer
+    
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
-# Use extend functionto add another list
-my_list.extend( [50, 60, 70])
+    numbers_count = int(input().strip())
 
-# Remove the last element
-my_list.pop(-1)
+    numbers = []
 
-# Sort in ascending order
-my_list.sort()
+    for _ in range(numbers_count):
+        numbers_item = int(input().strip())
+        numbers.append(numbers_item)
 
-# Find and print the index of the value 30
-print(my_list.index(30))
+    result = romanizer(numbers)
 
-#print(my_list)
+    fptr.write(result + '\n')
+
+    fptr.close()
