@@ -1,0 +1,6 @@
+This is line 1
+12345
+Another line with a mix of string and number:42 is the answer
+Appending line 1
+987654
+Appending another line
